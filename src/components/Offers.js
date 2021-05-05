@@ -1,27 +1,25 @@
-/* Import react-router-dom */
-import { useParams } from "react-router-dom";
-
 /* Import hooks */
 import { Link } from "react-router-dom";
 
-const Offers = ({ data, id }) => {
-  console.log(id);
-  id = useParams();
+const Offers = ({ data, ids, affectId }) => {
+  let id = affectId(ids);
+
+  //   id = useParams();
+
   return (
     <main className="wrapper">
-      {/* <Link to={`/offer/${ids[0]}`}>Go to Offer page to test</Link> */}
+      <Link to={`/offer/${id}`}>Go to Offer page to test</Link>
       <div className="offers">
         {data.offers.map((elem) => {
           return (
             <div
               key={elem._id}
               className="offer-card"
-
-              //   onClick={() => {
-              //     return (
-
-              //     );
-              //   }}
+              onClick={() => {
+                const id = elem._id;
+                console.log(id);
+                return "hi";
+              }}
             >
               <div>
                 <img

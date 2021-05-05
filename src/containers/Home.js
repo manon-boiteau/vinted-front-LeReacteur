@@ -7,15 +7,21 @@ import Hero from "../components/Hero";
 import Offers from "../components/Offers";
 
 const Home = ({ data }) => {
-  const id = data.offers.map((elem, index) => {
+  const ids = data.offers.map((elem) => {
     return elem._id;
   });
-  console.log(id);
+
+  const affectId = (arr) => {
+    for (let i = 0; i < arr.length; i++) {
+      return arr[i];
+    }
+  };
+
   return (
     <div>
       <Header />
       <Hero />
-      <Offers data={data} id={id} />
+      <Offers data={data} ids={ids} affectId={affectId} />
     </div>
   );
 };
