@@ -1,56 +1,55 @@
 /* Import hooks */
 import { Link } from "react-router-dom";
 
-const Offers = ({ data, ids, affectId }) => {
-  let id = affectId(ids);
-
-  //   id = useParams();
-
+const Offers = ({ data }) => {
   return (
     <main className="wrapper">
-      <Link to={`/offer/${id}`}>Go to Offer page to test</Link>
       <div className="offers">
         {data.offers.map((elem) => {
           return (
-            <div
+            <Link
               key={elem._id}
-              className="offer-card"
-              onClick={() => {
-                const id = elem._id;
-                console.log(id);
-                return "hi";
-              }}
+              to={`/offer/${elem._id}`}
+              className="wrap-card"
             >
-              <div>
-                <img
-                  src={elem.owner.account.avatar.secure_url}
-                  alt="/"
-                  className="avatar-card"
-                />
-                <span>{elem.owner.account.username}</span>
-              </div>
+              <div className="offer-card">
+                <div>
+                  <img
+                    src={elem.owner.account.avatar.secure_url}
+                    alt="/"
+                    className="avatar-card"
+                  />
+                  <span>{elem.owner.account.username}</span>
+                </div>
 
-              <div>
-                <img
-                  key={elem.product_image.asset_id}
-                  src={elem.product_image.secure_url}
-                  alt="/"
-                  className="product-card"
-                />
-              </div>
+                <div>
+                  <img
+                    key={elem.product_image.asset_id}
+                    src={elem.product_image.secure_url}
+                    alt="/"
+                    className="product-card"
+                  />
+                </div>
 
-              <p>{elem.product_price}</p>
-              <>
-                {elem.product_details.map((elem, index) => {
-                  return elem.TAILLE ? <p key={index}>{elem.TAILLE}</p> : null;
-                })}
-              </>
-              <>
-                {elem.product_details.map((elem, index) => {
-                  return elem.MARQUE ? <p key={index}>{elem.MARQUE}</p> : null;
-                })}
-              </>
-            </div>
+                <div>
+                  <p>{elem.product_price} €</p>
+                  <>
+                    {elem.product_details.map((elem, index) => {
+                      return elem.TAILLE ? (
+                        <p key={index}>{elem.TAILLE}</p>
+                      ) : null;
+                    })}
+                  </>
+                  <>
+                    {elem.product_details.map((elem, index) => {
+                      return elem.MARQUE ? (
+                        <p key={index}>{elem.MARQUE}</p>
+                      ) : null;
+                    })}
+                  </>
+                </div>
+              </div>
+            </Link>
           );
         })}
       </div>

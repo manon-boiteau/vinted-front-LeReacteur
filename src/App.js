@@ -38,10 +38,10 @@ function App() {
   ) : (
     <Router>
       <Switch>
-        <Route path="/offer:id">
+        <Route path="/offer/:id">
           <Offer />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <Home data={data} />
         </Route>
       </Switch>
