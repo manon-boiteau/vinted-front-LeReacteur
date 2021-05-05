@@ -4,13 +4,9 @@ import { useParams } from "react-router-dom";
 /* Import hooks */
 import { Link } from "react-router-dom";
 
-const Offers = ({ data }) => {
-  //   const ids = data.offers.map((elem, index) => {
-  //     return elem._id;
-  //   });
-
-  //   ids = useParams();
-
+const Offers = ({ data, id }) => {
+  console.log(id);
+  id = useParams();
   return (
     <main className="wrapper">
       {/* <Link to={`/offer/${ids[0]}`}>Go to Offer page to test</Link> */}
