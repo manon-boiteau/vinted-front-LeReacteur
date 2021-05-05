@@ -1,1 +1,56 @@
-/* Other rules */
+/* Global rules */
+* {
+  box-sizing: border-box;
+}
+.wrapper {
+  margin: 0 auto;
+  width: 90vw;
+  border: 2px solid green;
+}
+/* Header */
+header img {
+  width: 100px;
+}
+/* Hero */
+.hero {
+  position: relative;
+}
+.hero div {
+  position: absolute;
+  top: calc(100% / 3);
+  left: calc(100% / 10);
+  background-color: aquamarine;
+  border: 1px solid rgb(173, 173, 173);
+  width: 400px;
+  height: 258px;
+}
+.hero img {
+  width: 100vw;
+}
+/* Home */
+/* Offer */
+.offers {
+  background-color: greenyellow;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.offer-card {
+  width: calc(100% / 5 - 8px);
+  cursor: pointer;
+}
+.offers > div:not(:nth-child(5n)) {
+  margin-right: 10px;
+}
+.offer-card img {
+  object-fit: cover;
+}
+.avatar-card {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.product-card {
+  width: 100%;
+  height: 357px;
+}
