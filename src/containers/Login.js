@@ -1,5 +1,5 @@
 /* Import react-router-dom */
-// import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 /* Import hooks from React */
 import { useState } from "react";
@@ -7,10 +7,11 @@ import { useState } from "react";
 /* Import Axios */
 import axios from "axios";
 
-const Login = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = useState();
+
+  const history = useHistory();
 
   const handleEmail = (event) => {
     const result = event.target.value;
@@ -23,6 +24,7 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
     const fetchData = async () => {
       try {
         const response = await axios.post(
@@ -32,8 +34,11 @@ const Login = () => {
             password: password,
           }
         );
-        console.log(response.data.token);
-        setData(response.data.token);
+        // console.log("token ", response.data.token);
+        const token = response.data.token;
+        setUser(token);
+
+        history.push("/"); // user can enter - redirect to home page
       } catch (error) {
         console.log(error.message);
       }
@@ -42,15 +47,25 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h2>Se connecter</h2>
-      <form onSubmit={handleSubmit}>
-        <input type="email" onChange={handleEmail} />
-        <input type="password" onChange={handlePassword} />
-        <input type="submit" value="Se connecter" />
-        {/* <Link to="/signup">Pas encore de compte ? Inscrit toi !</Link> */}
-      </form>
-    </>
+    <main className="login-form">
+      <div className="login-form wrapper">
+        <h2>Se connecter</h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Adresse email"
+            onChange={handleEmail}
+          />
+          <input
+            type="password"
+            placeholder="Mot de passe"
+            onChange={handlePassword}
+          />
+          <input type="submit" value="Se connecter" className="btn-green" />
+          <Link to="/signup">Pas encore de compte ? Inscrit toi !</Link>
+        </form>
+      </div>
+    </main>
   );
 };
 
