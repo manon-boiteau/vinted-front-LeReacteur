@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 /* Import containers */
 import Home from "./containers/Home";
-import Signup from "./containers/Signup";
+// import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import Offer from "./containers/Offer";
 import NoMatch from "./containers/NoMatch";
@@ -18,14 +18,14 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/offer/:id">
+        {/* <Route>
+          <Signup path="/signup" />
+        </Route> */}
+        <Route>
+          <Login path="/login" />
+        </Route>
+        <Route path="/offer/:id">
           <Offer />
-        </Route>
-        <Route>
-          <Signup exact path="/signup" />
-        </Route>
-        <Route>
-          <Login exact path="/login" />
         </Route>
         <Route exact path="/">
           <Home />
