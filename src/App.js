@@ -3,46 +3,35 @@ import "./App.css";
 /* Import react-router-dom */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-/* Import hooks */
-import { useState, useEffect } from "react";
-
-/* Import axios */
-import axios from "axios";
-
-/* Import */
+/* Import containers */
 import Home from "./containers/Home";
+import Signup from "./containers/Signup";
+import Login from "./containers/Login";
 import Offer from "./containers/Offer";
+import NoMatch from "./containers/NoMatch";
+
+/* Import components */
+import Header from "./components/Header";
 
 function App() {
-  const [data, setData] = useState();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers"
-        );
-        console.log(response.data);
-        setData(response.data);
-        setIsLoading(false);
-      } catch (e) {
-        console.log(e.message);
-      }
-    };
-    fetchData();
-  }, []);
-
-  return isLoading ? (
-    <span>En cours de chargement...</span>
-  ) : (
+  return (
     <Router>
+      <Header />
       <Switch>
-        <Route path="/offer/:id">
+        <Route exact path="/offer/:id">
           <Offer />
         </Route>
+        <Route>
+          <Signup exact path="/signup" />
+        </Route>
+        <Route>
+          <Login exact path="/login" />
+        </Route>
         <Route exact path="/">
-          <Home data={data} />
+          <Home />
+        </Route>
+        <Route path="*">
+          <NoMatch />
         </Route>
       </Switch>
     </Router>

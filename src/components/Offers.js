@@ -1,4 +1,4 @@
-/* Import hooks */
+/* Import react-router-dom */
 import { Link } from "react-router-dom";
 
 const Offers = ({ data }) => {

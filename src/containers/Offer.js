@@ -1,14 +1,15 @@
 /* Import react-router-dom */
 import { useParams } from "react-router-dom";
 
-/* Import hooks */
+/* Import hooks from React */
 import { useState, useEffect } from "react";
 
 /* Import axios */
 import axios from "axios";
 
-/* Import */
-import Header from "../components/Header";
+/* Import react-multi-carousel */
+// import Carousel from "react-multi-carousel";
+// import "react-multi-carousel/lib/styles.css";
 
 const Offer = () => {
   const [data, setData] = useState();
@@ -22,7 +23,6 @@ const Offer = () => {
         const response = await axios.get(
           `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
         );
-        console.log(response.data);
         setData(response.data);
         setIsLoading(false);
       } catch (e) {
@@ -36,9 +36,8 @@ const Offer = () => {
     <span>En cours de chargement...</span>
   ) : (
     <>
-      <Header />
-      <main>
-        <div>
+      <main className="main-offer">
+        <div className="wrapper offer-page">
           {data.product_pictures.map((elem, index) => {
             return (
               <div key={index}>
@@ -46,56 +45,73 @@ const Offer = () => {
               </div>
             );
           })}
-          <p>{data.product_price} €</p>
-
-          {data.product_details.map((elem, index) => {
-            return elem.MARQUE ? (
+          <div className="offer-page-details">
+            <p className="offer-price">{data.product_price} €</p>
+            <div className="bloc-1">
               <div>
-                <p>{elem.MARQUE}</p>
+                <p>MARQUE</p>
+                <p>TAILLE</p>
+                <p>ÉTAT</p>
+                <p>COULEUR</p>
+                <p>EMPLACEMENT</p>
               </div>
-            ) : null;
-          })}
-
-          {data.product_details.map((elem, index) => {
-            return elem.TAILLE ? (
               <div>
-                <p>{elem.TAILLE}</p>
-              </div>
-            ) : null;
-          })}
+                {data.product_details.map((elem, index) => {
+                  return elem.MARQUE ? (
+                    <div>
+                      <p>{elem.MARQUE}</p>
+                    </div>
+                  ) : null;
+                })}
 
-          {data.product_details.map((elem, index) => {
-            return elem.ÉTAT ? (
+                {data.product_details.map((elem, index) => {
+                  return elem.TAILLE ? (
+                    <div>
+                      <p>{elem.TAILLE}</p>
+                    </div>
+                  ) : null;
+                })}
+
+                {data.product_details.map((elem, index) => {
+                  return elem.ÉTAT ? (
+                    <div>
+                      <p>{elem.ÉTAT}</p>
+                    </div>
+                  ) : null;
+                })}
+
+                {data.product_details.map((elem, index) => {
+                  return elem.COULEUR ? (
+                    <div>
+                      <p>{elem.COULEUR}</p>
+                    </div>
+                  ) : null;
+                })}
+
+                {data.product_details.map((elem, index) => {
+                  return elem.EMPLACEMENT ? (
+                    <div>
+                      <p>{elem.EMPLACEMENT}</p>
+                    </div>
+                  ) : null;
+                })}
+              </div>
+            </div>
+
+            <div className="bloc-2">
+              <p>{data.product_name}</p>
+              <p>{data.product_description}</p>
               <div>
-                <p>{elem.ÉTAT}</p>
+                <img src={data.owner.account.avatar.secure_url} alt="/" />
+                <span>{data.owner.account.username}</span>
               </div>
-            ) : null;
-          })}
-
-          {data.product_details.map((elem, index) => {
-            return elem.COULEUR ? (
-              <div>
-                <p>{elem.COULEUR}</p>
-              </div>
-            ) : null;
-          })}
-
-          {data.product_details.map((elem, index) => {
-            return elem.EMPLACEMENT ? (
-              <div>
-                <p>{elem.EMPLACEMENT}</p>
-              </div>
-            ) : null;
-          })}
-
-          <p>{data.product_description}</p>
-          <p>{data.product_name}</p>
-          <img src={data.owner.account.avatar.secure_url} alt="/" />
-          <span>{data.owner.account.username}</span>
-          <button>Acheter</button>
+            </div>
+            <button className="btn-green">Acheter</button>
+          </div>
         </div>
       </main>
     </>
   );
 };
+
 export default Offer;

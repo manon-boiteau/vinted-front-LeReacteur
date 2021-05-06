@@ -1,4 +1,4 @@
-/* Import */
+/* Import images */
 import hero from "../assets/img/hero-banner.jpg";
 
 const Hero = () => {
