@@ -8,6 +8,12 @@ import axios from "axios";
 import Hero from "../components/Hero";
 import Offers from "../components/Offers";
 
+/* Import Fontawsome */
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+library.add(faSpinner);
+
 const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +23,7 @@ const Home = () => {
       try {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offers"
+          // "https://vinted--le-reacteur.herokuapp.com/offers"
         );
 
         setData(response.data);
@@ -29,7 +36,13 @@ const Home = () => {
   }, []);
 
   return isLoading ? (
-    <span>En cours de chargement...</span>
+    <div className="loading">
+      <span className="spin">
+        <FontAwesomeIcon icon="spinner" spin />
+      </span>
+
+      <span>En cours de chargement...</span>
+    </div>
   ) : (
     <div>
       <Hero />

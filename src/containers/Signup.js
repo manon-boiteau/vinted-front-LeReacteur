@@ -12,6 +12,7 @@ const Signup = (props) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const history = useHistory();
 
@@ -37,18 +38,27 @@ const Signup = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const fetchData = async () => {
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
-        {
-          username: name,
-          email: email,
-          password: password,
+      try {
+        const response = await axios.post(
+          "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+          {
+            username: name,
+            email: email,
+            password: password,
+          }
+        );
+        if (response.data.token) {
+          const token = response.data.token;
+          setUser(token);
+          history.push("/");
+        } else {
+          setErrorMessage("une erreur est survenue");
         }
-      );
-      console.log(response.data);
-      const token = response.data.token;
-      setUser(token);
-      history.push("/");
+      } catch (error) {
+        if (error.response.status === 409) {
+          setErrorMessage("🤭 Cet email existe déjà.");
+        }
+      }
     };
     fetchData();
   };
@@ -84,7 +94,13 @@ const Signup = (props) => {
               Conditions et Politique de Confidentialité de Vinted. Je confirme
               avoir au moins 18 ans.
             </p>
-            <input type="submit" value="S'inscrire" className="btn-green" />
+            <input
+              type="submit"
+              value="S'inscrire"
+              className="btn-green"
+              onClick={props.onSubmit}
+            />
+            <span>{errorMessage}</span>
             <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
           </form>
         </div>

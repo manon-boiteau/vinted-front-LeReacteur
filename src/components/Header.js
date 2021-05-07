@@ -32,19 +32,23 @@ const Header = ({ setUser, userToken, setShow, show }) => {
             </button>
           ) : (
             <>
-              <Link to="/signup" className="btn-white">
-                S'inscrire
-              </Link>
               <Link
-                to="/login"
+                to="/signup"
                 className="btn-white"
                 onClick={() => {
                   setShow(true);
                 }}
               >
+                S'inscrire
+              </Link>
+              <Signup
+                onClose={() => setShow(false)}
+                show={show}
+                setUser={setUser}
+              />
+              <Link to="/login" className="btn-white">
                 Se connecter
               </Link>
-              <Signup onClose={() => setShow(false)} show={show} />
             </>
           )}
           <button className="btn-green">Vends tes articles</button>

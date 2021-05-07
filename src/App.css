@@ -54,6 +54,26 @@ button {
   background-color: var(--main-green);
   color: var(--white);
 }
+/* 
+.spin {
+  font-size: 100px;
+} */
+/* -------------- 404 - NOT FOUND PAGE ------------- */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20vh;
+}
+
+/* -------------- LOADING ------------- */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 /* -------------- HEADER ------------- */
 header {
@@ -182,6 +202,12 @@ header .btn-disco {
 .modal-body a:hover {
   text-decoration: underline;
 }
+.modal-body span {
+  color: var(--orange-disconnect);
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
 .modal-footer {
   text-align: right;
 }
@@ -234,6 +260,11 @@ form.login-form {
 .login-form a:hover {
   text-decoration: underline;
 }
+.login-form span {
+  color: var(--orange-disconnect);
+  margin-bottom: 20px;
+  font-size: 14px;
+}
 
 /* ----------- HOME PAGE ----------- */
 /* Hero */
@@ -251,10 +282,15 @@ form.login-form {
   width: 400px;
   height: 258px;
 }
-.hero img {
+.hero .banner {
   width: 100vw;
   height: 520px;
   object-fit: cover;
+}
+.hero img.banner-cut {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }
 .hero button {
   padding: 15px 20px;
@@ -331,16 +367,27 @@ form.login-form {
   justify-content: space-between;
   padding-top: 20px;
 }
-.offer-page img {
-  width: 500px;
+.offer-page .carousel {
+  display: flex;
+  overflow: hidden;
+  overflow-x: scroll;
+  width: 70%;
+}
+/* ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
+.offer-page .carousel img {
   height: 80vh;
+  width: calc(100% / 2);
   object-fit: cover;
+  border-radius: 5px;
+  margin-right: 2px;
 }
 .offer-page-details {
   background-color: white;
   padding: 30px;
-  width: 400px;
-  height: 80vh;
+  width: 30%;
 }
 .bloc-1 {
   display: flex;

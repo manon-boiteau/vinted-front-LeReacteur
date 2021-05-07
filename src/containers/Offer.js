@@ -7,10 +7,6 @@ import { useState, useEffect } from "react";
 /* Import axios */
 import axios from "axios";
 
-/* Import react-multi-carousel */
-// import Carousel from "react-multi-carousel";
-// import "react-multi-carousel/lib/styles.css";
-
 const Offer = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -38,13 +34,11 @@ const Offer = () => {
     <>
       <main className="main-offer">
         <div className="wrapper offer-page">
-          {data.product_pictures.map((elem, index) => {
-            return (
-              <div key={index}>
-                <img src={elem.secure_url} alt="/" />
-              </div>
-            );
-          })}
+          <div className="carousel">
+            {data.product_pictures.map((elem, index) => {
+              return <img key={index} src={elem.secure_url} alt="/" />;
+            })}
+          </div>
           <div className="offer-page-details">
             <p className="offer-price">{data.product_price} €</p>
             <div className="bloc-1">

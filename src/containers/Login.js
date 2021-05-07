@@ -10,6 +10,7 @@ import axios from "axios";
 const Login = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const history = useHistory();
 
@@ -34,13 +35,17 @@ const Login = ({ setUser }) => {
             password: password,
           }
         );
-        // console.log("token ", response.data.token);
-        const token = response.data.token;
-        setUser(token);
+        if (response.data.token) {
+          // console.log("token ", response.data.token);
+          const token = response.data.token;
+          setUser(token);
 
-        history.push("/"); // user can enter - redirect to home page
+          history.push("/"); // user can enter - redirect to home page
+        }
       } catch (error) {
-        console.log(error.message);
+        if (error.response.status === 400) {
+          setErrorMessage("⛔️ Mauvais email et/ou mot de passe.");
+        }
       }
     };
     fetchData();
@@ -62,6 +67,7 @@ const Login = ({ setUser }) => {
             onChange={handlePassword}
           />
           <input type="submit" value="Se connecter" className="btn-green" />
+          <span>{errorMessage}</span>
           <Link to="/signup">Pas encore de compte ? Inscrit toi !</Link>
         </form>
       </div>
