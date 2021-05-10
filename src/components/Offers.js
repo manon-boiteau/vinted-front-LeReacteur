@@ -1,9 +1,31 @@
+/* Import hooks from React */
+// import { useState, useEffect } from "react";
+
 /* Import react-router-dom */
 import { Link } from "react-router-dom";
 
 const Offers = ({ data }) => {
+  // const [nbPages, setNbPages] = useState(20);
+
   return (
     <main className="wrapper">
+      <div className="select-pages">
+        <select name="pages" id="pages">
+          <option
+            value="cinq"
+            // onCLick={() => {
+            //   setNbPages(nbPages + 1);
+            // }}
+          >
+            5
+          </option>
+          <option value="dix">10</option>
+          <option value="vingt" selected>
+            20
+          </option>
+        </select>
+      </div>
+
       <div className="offers">
         {data.offers.map((elem) => {
           return (
@@ -15,7 +37,7 @@ const Offers = ({ data }) => {
               <div className="offer-card">
                 <div>
                   <img
-                    src={elem.owner.account.avatar.secure_url}
+                    src={elem.owner.account.avatar.secure_url} // ??
                     alt="/"
                     className="avatar-card"
                   />

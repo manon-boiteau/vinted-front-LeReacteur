@@ -1,7 +1,12 @@
 import "./App.css";
 
 /* Import react-router-dom */
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 
 /* Import js-cookie */
 import Cookies from "js-cookie";
@@ -11,13 +16,14 @@ import { useState } from "react";
 
 /* Import containers */
 import Home from "./containers/Home";
-import Signup from "./containers/Signup";
 import Login from "./containers/Login";
 import Offer from "./containers/Offer";
 import NoMatch from "./containers/NoMatch";
 
 /* Import components */
 import Header from "./components/Header";
+import Signup from "./components/Signup";
+import Publish from "./components/Publish";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -41,15 +47,20 @@ function App() {
         setShow={setShow}
         show={show}
       />
+      <Signup setUser={setUser} />
       <Switch>
-        <Route path="/signup">
-          <Signup setUser={setUser} />
-        </Route>
         <Route path="/login">
-          <Login setUser={setUser} />
+          <Login setUser={setUser} setShow={setShow} />
         </Route>
         <Route path="/offer/:id">
           <Offer />
+        </Route>
+        <Route path="/publish">
+          {userToken ? (
+            <Publish userToken={userToken} setUserToken={setUserToken} />
+          ) : (
+            <Redirect to="/login" />
+          )}
         </Route>
         <Route exact path="/">
           <Home />

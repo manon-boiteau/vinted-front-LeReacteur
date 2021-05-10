@@ -18,12 +18,14 @@ const Home = () => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
+  // My Api : https://vinted--le-reacteur.herokuapp.com/offers
+  // Le Reacteur API : https://lereacteur-vinted-api.herokuapp.com/offers
+
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
           "https://lereacteur-vinted-api.herokuapp.com/offers"
-          // "https://vinted--le-reacteur.herokuapp.com/offers"
         );
 
         setData(response.data);

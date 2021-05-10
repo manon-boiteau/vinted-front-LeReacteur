@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/img/vinted-logo.png";
 
 /* Import Components */
-import Signup from "../containers/Signup";
+import Signup from "../components/Signup";
 
 const Header = ({ setUser, userToken, setShow, show }) => {
   return (
@@ -33,7 +33,6 @@ const Header = ({ setUser, userToken, setShow, show }) => {
           ) : (
             <>
               <Link
-                to="/signup"
                 className="btn-white"
                 onClick={() => {
                   setShow(true);
@@ -51,7 +50,9 @@ const Header = ({ setUser, userToken, setShow, show }) => {
               </Link>
             </>
           )}
-          <button className="btn-green">Vends tes articles</button>
+          <Link to="/publish" className="btn-green">
+            Vends tes articles
+          </Link>
         </div>
       </div>
     </header>

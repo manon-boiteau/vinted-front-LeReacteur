@@ -9,6 +9,7 @@ import axios from "axios";
 
 const Signup = (props) => {
   const { setUser, show } = props;
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,6 +63,7 @@ const Signup = (props) => {
     };
     fetchData();
   };
+
   return (
     <div className="modal" onClick={props.onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -101,7 +103,9 @@ const Signup = (props) => {
               onClick={props.onSubmit}
             />
             <span>{errorMessage}</span>
-            <Link to="/login">Tu as déjà un compte ? Connecte-toi !</Link>
+            <Link to="/login" onClick={props.onClose}>
+              Tu as déjà un compte ? Connecte-toi !
+            </Link>
           </form>
         </div>
         <div className="modal-footer">

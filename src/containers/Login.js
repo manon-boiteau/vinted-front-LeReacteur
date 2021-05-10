@@ -7,10 +7,13 @@ import { useState } from "react";
 /* Import Axios */
 import axios from "axios";
 
-const Login = ({ setUser }) => {
+const Login = (props) => {
+  const { setUser, setShow } = props;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [modal, setModal] = useState(false);
 
   const history = useHistory();
 
@@ -68,7 +71,15 @@ const Login = ({ setUser }) => {
           />
           <input type="submit" value="Se connecter" className="btn-green" />
           <span>{errorMessage}</span>
-          <Link to="/signup">Pas encore de compte ? Inscrit toi !</Link>
+          <span
+            className="redir-signup"
+            onClick={() => {
+              setModal(true);
+              setShow(true);
+            }}
+          >
+            Pas encore de compte ? Inscrit toi !
+          </span>
         </form>
       </div>
     </main>
