@@ -20,9 +20,7 @@ const Offers = ({ data }) => {
             5
           </option>
           <option value="dix">10</option>
-          <option value="vingt" selected>
-            20
-          </option>
+          <option value="vingt">20</option>
         </select>
       </div>
 
@@ -35,12 +33,14 @@ const Offers = ({ data }) => {
               className="wrap-card"
             >
               <div className="offer-card">
-                <div>
-                  <img
-                    src={elem.owner.account.avatar.secure_url} // ??
-                    alt="/"
-                    className="avatar-card"
-                  />
+                <div className="avatar-card">
+                  {elem.owner.account.avatar ? (
+                    <img
+                      src={elem.owner.account.avatar.secure_url}
+                      alt="/"
+                      className="avatar-card"
+                    />
+                  ) : null}
                   <span>{elem.owner.account.username}</span>
                 </div>
 

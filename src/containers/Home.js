@@ -10,9 +10,9 @@ import Offers from "../components/Offers";
 
 /* Import Fontawsome */
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-library.add(faSpinner);
+library.add(faSpinner, faPlus);
 
 const Home = () => {
   const [data, setData] = useState();

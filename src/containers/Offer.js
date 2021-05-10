@@ -34,11 +34,20 @@ const Offer = () => {
     <>
       <main className="main-offer">
         <div className="wrapper offer-page">
-          <div className="carousel">
-            {data.product_pictures.map((elem, index) => {
-              return <img key={index} src={elem.secure_url} alt="/" />;
-            })}
-          </div>
+          {data.product_pictures.length > 0 ? (
+            <div className="carousel">
+              {data.product_pictures.map((elem) => {
+                return (
+                  <img key={elem.asset_id} src={elem.secure_url} alt="/" />
+                );
+              })}
+            </div>
+          ) : (
+            <div key={data.product_image.asset_id} className="carousel">
+              <img src={data.product_image.secure_url} alt="/" />
+            </div>
+          )}
+
           <div className="offer-page-details">
             <p className="offer-price">{data.product_price} €</p>
             <div className="bloc-1">
@@ -96,7 +105,9 @@ const Offer = () => {
               <p>{data.product_name}</p>
               <p>{data.product_description}</p>
               <div>
-                <img src={data.owner.account.avatar.secure_url} alt="/" />
+                {data.owner.account.avatar ? (
+                  <img src={data.owner.account.avatar.secure_url} alt="/" />
+                ) : null}
                 <span>{data.owner.account.username}</span>
               </div>
             </div>

@@ -1,5 +1,5 @@
 /* Import react-router-dom */
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 /* Import hooks from React */
 import { useState } from "react";
@@ -43,7 +43,7 @@ const Login = (props) => {
           const token = response.data.token;
           setUser(token);
 
-          history.push("/"); // user can enter - redirect to home page
+          history.push("/publish"); // user can enter - redirect to home page
         }
       } catch (error) {
         if (error.response.status === 400) {

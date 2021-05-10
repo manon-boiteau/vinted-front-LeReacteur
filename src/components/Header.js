@@ -32,14 +32,14 @@ const Header = ({ setUser, userToken, setShow, show }) => {
             </button>
           ) : (
             <>
-              <Link
+              <button
                 className="btn-white"
                 onClick={() => {
                   setShow(true);
                 }}
               >
                 S'inscrire
-              </Link>
+              </button>
               <Signup
                 onClose={() => setShow(false)}
                 show={show}
