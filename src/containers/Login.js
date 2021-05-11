@@ -39,7 +39,6 @@ const Login = (props) => {
           }
         );
         if (response.data.token) {
-          // console.log("token ", response.data.token);
           const token = response.data.token;
           setUser(token);
 

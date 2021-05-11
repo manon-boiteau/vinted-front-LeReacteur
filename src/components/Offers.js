@@ -1,24 +1,12 @@
-/* Import hooks from React */
-// import { useState, useEffect } from "react";
-
 /* Import react-router-dom */
 import { Link } from "react-router-dom";
 
 const Offers = ({ data }) => {
-  // const [nbPages, setNbPages] = useState(20);
-
   return (
     <main className="wrapper">
       <div className="select-pages">
         <select name="pages" id="pages">
-          <option
-            value="cinq"
-            // onCLick={() => {
-            //   setNbPages(nbPages + 1);
-            // }}
-          >
-            5
-          </option>
+          <option value="cinq">5</option>
           <option value="dix">10</option>
           <option value="vingt">20</option>
         </select>

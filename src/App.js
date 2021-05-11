@@ -25,9 +25,13 @@ import NoMatch from "./containers/NoMatch";
 /* Import components */
 import Header from "./components/Header";
 import Signup from "./components/Signup";
+import Footer from "./components/Footer";
 
 function App() {
+  // Catch user's token in a cookie (or not 🤪)
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
+
+  // State for modal signup
   const [show, setShow] = useState(false);
 
   const setUser = (token) => {
@@ -73,6 +77,7 @@ function App() {
           <NoMatch />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }

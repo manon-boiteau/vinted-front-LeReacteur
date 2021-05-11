@@ -21,6 +21,7 @@ const Header = ({ setUser, userToken, setShow, show }) => {
           className="search-bar"
         />
         <div>
+          {/* Check user's authorization */}
           {userToken ? (
             <button
               className="btn-disco"
@@ -40,6 +41,7 @@ const Header = ({ setUser, userToken, setShow, show }) => {
               >
                 S'inscrire
               </button>
+              {/* Modal signup */}
               <Signup
                 onClose={() => setShow(false)}
                 show={show}

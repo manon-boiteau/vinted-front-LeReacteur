@@ -6,7 +6,11 @@ import CheckoutForm from "../components/CheckoutForm";
 /* react-router-dom - import */
 import { useLocation } from "react-router-dom";
 
+// Stripe - clé publique Le Réacteur : pk_test_5z9rSB8XwuAOihoBixCMfL6X
+// Stripe - clé publique Manon : pk_test_51IptRhFrdqHBPTfkIcBKfaiA63tewBYGm2narD3B3cN4sGAjggF2B78PhHMdLRki9kCg602zkbHZWout5xhPldsW00eANM8jsY
+
 const Payment = () => {
+  // Catch data sent (cf. useHistory) from Offer
   const location = useLocation();
   const { title, amount, name } = location.state;
   const stripePromise = loadStripe(
