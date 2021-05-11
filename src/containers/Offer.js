@@ -1,5 +1,5 @@
 /* Import react-router-dom */
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 /* Import hooks from React */
 import { useState, useEffect } from "react";
@@ -7,9 +7,11 @@ import { useState, useEffect } from "react";
 /* Import axios */
 import axios from "axios";
 
-const Offer = () => {
+const Offer = ({ userToken, setUser }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
+
+  const history = useHistory();
 
   const { id } = useParams();
 
@@ -61,7 +63,7 @@ const Offer = () => {
               <div>
                 {data.product_details.map((elem, index) => {
                   return elem.MARQUE ? (
-                    <div>
+                    <div key={index}>
                       <p>{elem.MARQUE}</p>
                     </div>
                   ) : null;
@@ -69,7 +71,7 @@ const Offer = () => {
 
                 {data.product_details.map((elem, index) => {
                   return elem.TAILLE ? (
-                    <div>
+                    <div key={index}>
                       <p>{elem.TAILLE}</p>
                     </div>
                   ) : null;
@@ -77,7 +79,7 @@ const Offer = () => {
 
                 {data.product_details.map((elem, index) => {
                   return elem.ÉTAT ? (
-                    <div>
+                    <div key={index}>
                       <p>{elem.ÉTAT}</p>
                     </div>
                   ) : null;
@@ -85,7 +87,7 @@ const Offer = () => {
 
                 {data.product_details.map((elem, index) => {
                   return elem.COULEUR ? (
-                    <div>
+                    <div key={index}>
                       <p>{elem.COULEUR}</p>
                     </div>
                   ) : null;
@@ -93,7 +95,7 @@ const Offer = () => {
 
                 {data.product_details.map((elem, index) => {
                   return elem.EMPLACEMENT ? (
-                    <div>
+                    <div key={index}>
                       <p>{elem.EMPLACEMENT}</p>
                     </div>
                   ) : null;
@@ -111,7 +113,30 @@ const Offer = () => {
                 <span>{data.owner.account.username}</span>
               </div>
             </div>
-            <button className="btn-green">Acheter</button>
+            {userToken ? (
+              <button
+                className="btn-green"
+                onClick={() => {
+                  setUser(userToken);
+                  history.push("/payment", {
+                    title: data.product_name,
+                    amount: data.product_price,
+                    name: data.owner._id,
+                  });
+                }}
+              >
+                Acheter
+              </button>
+            ) : (
+              <button
+                className="btn-green"
+                onClick={() => {
+                  history.push("/login");
+                }}
+              >
+                Acheter
+              </button>
+            )}
           </div>
         </div>
       </main>

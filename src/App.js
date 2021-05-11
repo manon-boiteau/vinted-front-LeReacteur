@@ -18,12 +18,13 @@ import { useState } from "react";
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Offer from "./containers/Offer";
+import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 import NoMatch from "./containers/NoMatch";
 
 /* Import components */
 import Header from "./components/Header";
 import Signup from "./components/Signup";
-import Publish from "./components/Publish";
 
 function App() {
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
@@ -53,7 +54,7 @@ function App() {
           <Login setUser={setUser} setShow={setShow} />
         </Route>
         <Route path="/offer/:id">
-          <Offer />
+          <Offer userToken={userToken} setUser={setUser} />
         </Route>
         <Route path="/publish">
           {userToken ? (
@@ -61,6 +62,9 @@ function App() {
           ) : (
             <Redirect to="/login" />
           )}
+        </Route>
+        <Route path="/payment">
+          <Payment />
         </Route>
         <Route exact path="/">
           <Home />

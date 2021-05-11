@@ -20,7 +20,7 @@ const Publish = ({ userToken }) => {
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
   const [picture, setPicture] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleSubmit = async (event) => {
     console.log(userToken);
@@ -78,7 +78,7 @@ const Publish = ({ userToken }) => {
             <input
               type="text"
               id="title"
-              placeholder="Chemise Sézane verte"
+              placeholder="ex : Chemise Sézane verte"
               onChange={(event) => {
                 setTitle(event.target.value);
               }}
@@ -101,7 +101,7 @@ const Publish = ({ userToken }) => {
             <input
               type="text"
               id="price"
-              placeholder="15"
+              placeholder="00.00 €"
               onChange={(event) => {
                 setPrice(event.target.value);
               }}
@@ -113,7 +113,7 @@ const Publish = ({ userToken }) => {
             <input
               type="text"
               id="condition"
-              placeholder="Bon état"
+              placeholder="ex : Bon état"
               onChange={(event) => {
                 setCondition(event.target.value);
               }}
@@ -125,7 +125,7 @@ const Publish = ({ userToken }) => {
             <input
               type="text"
               id="brand"
-              placeholder="Sézane"
+              placeholder="ex : Sézane"
               onChange={(event) => {
                 setBrand(event.target.value);
               }}
@@ -137,7 +137,7 @@ const Publish = ({ userToken }) => {
             <input
               type="text"
               id="size"
-              placeholder="38"
+              placeholder="ex : 38"
               onChange={(event) => {
                 setSize(event.target.value);
               }}
@@ -149,7 +149,7 @@ const Publish = ({ userToken }) => {
             <input
               type="text"
               id="color"
-              placeholder="Vert"
+              placeholder="ex : Vert"
               onChange={(event) => {
                 setColor(event.target.value);
               }}
@@ -161,7 +161,7 @@ const Publish = ({ userToken }) => {
             <input
               type="text"
               id="city"
-              placeholder="Amsterdam"
+              placeholder="ex : Amsterdam"
               onChange={(event) => {
                 setCity(event.target.value);
               }}
