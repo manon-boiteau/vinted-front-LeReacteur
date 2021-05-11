@@ -52,6 +52,26 @@ const CheckoutForm = ({ title, amount, name }) => {
 
   return (
     <div className="form-pay">
+      <p>Résumé de votre commande</p>
+      <div className="detail-pay">
+        <div>
+          <span>Commande</span>
+          <span>{amount} €</span>
+        </div>
+        <div>
+          <span>Frais protection acheteur</span>
+          <span>0.40 €</span>
+        </div>
+        <div>
+          <span>Frais de port</span>
+          <span>0.80 €</span>
+        </div>
+        <div>
+          <span>Total</span>
+          <span>{amount + 0.4 + 0.8} €</span>
+        </div>
+      </div>
+
       <form onSubmit={handleSubmit}>
         <CardElement />
         <input type="submit" />
