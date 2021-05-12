@@ -34,12 +34,14 @@ function App() {
   // State for modal signup
   const [show, setShow] = useState(false);
 
-  const setUser = (token) => {
+  const setUser = (token, id) => {
     if (token) {
       Cookies.set("token", token, { expires: 7 });
+      Cookies.set("userId", id);
       setUserToken(token);
     } else {
       Cookies.remove("token");
+      Cookies.remove("id");
       setUserToken(null);
     }
   };

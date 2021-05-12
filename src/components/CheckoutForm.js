@@ -38,7 +38,7 @@ const CheckoutForm = ({ title, amount, name }) => {
       const response = await axios.post("http://localhost:4000/pay", {
         token: stripeToken,
         title: title,
-        amount: amount * 100,
+        amount: amount,
       });
 
       if (response.status === 200) {

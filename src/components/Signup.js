@@ -50,7 +50,7 @@ const Signup = (props) => {
         );
         if (response.data.token) {
           const token = response.data.token;
-          setUser(token);
+          setUser(token, response.data.id);
           history.push("/");
         } else {
           setErrorMessage("une erreur est survenue");
