@@ -40,7 +40,7 @@ const Login = (props) => {
         );
         if (response.data.token) {
           const token = response.data.token;
-          setUser(token, response.data.id);
+          setUser(token, response.data._id);
 
           history.push("/publish"); // user can enter - redirect to home page
         }
