@@ -1,10 +1,5 @@
-/* Import react-router-dom */
-import { useParams, useHistory } from "react-router-dom";
-
-/* Import hooks from React */
 import { useState, useEffect } from "react";
-
-/* Import axios */
+import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Offer = ({ userToken, setUser }) => {

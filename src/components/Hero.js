@@ -1,4 +1,3 @@
-/* Import images */
 import hero from "../assets/img/hero-banner.jpg";
 import whiteCut from "../assets/img/banner-cut.svg";
 

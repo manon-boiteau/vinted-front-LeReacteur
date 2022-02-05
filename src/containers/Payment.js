@@ -1,9 +1,6 @@
-/* react-stripe-js - import */
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "../components/CheckoutForm";
-
-/* react-router-dom - import */
 import { useLocation } from "react-router-dom";
 
 // Stripe - clé publique Le Réacteur : pk_test_5z9rSB8XwuAOihoBixCMfL6X

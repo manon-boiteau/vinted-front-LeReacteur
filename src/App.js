@@ -1,37 +1,25 @@
 import "./App.css";
-
-/* Import react-router-dom */
+import { useState } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-
-/* Import js-cookie */
 import Cookies from "js-cookie";
 
-/* Import hooks from React */
-import { useState } from "react";
-
-/* Import containers */
 import Home from "./containers/Home";
 import Login from "./containers/Login";
 import Offer from "./containers/Offer";
 import Publish from "./containers/Publish";
 import Payment from "./containers/Payment";
 import NoMatch from "./containers/NoMatch";
-
-/* Import components */
 import Header from "./components/Header";
 import Signup from "./components/Signup";
 import Footer from "./components/Footer";
 
 function App() {
-  // Catch user's token in a cookie (or not 🤪)
   const [userToken, setUserToken] = useState(Cookies.get("userToken") || null);
-
-  // State for modal signup
   const [show, setShow] = useState(false);
 
   const setUser = (token, id) => {

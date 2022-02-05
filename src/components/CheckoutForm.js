@@ -1,16 +1,7 @@
-/* react-stripe-js - import */
-import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
-
-/* Hooks - import from React */
 import { useState } from "react";
-
-/* Import react-router-dom */
+import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import { useHistory } from "react-router-dom";
-
-/* Import js-cookie */
 import Cookies from "js-cookie";
-
-/* Axios - import */
 import axios from "axios";
 
 const CheckoutForm = ({ title, amount, name }) => {
@@ -18,7 +9,6 @@ const CheckoutForm = ({ title, amount, name }) => {
   const elements = useElements();
 
   const userId = Cookies.get("userId");
-  console.log(userId); // NE FONCTIONNE PAS - VOIR POURQUOI
 
   const [successMessage, setSuccessMessage] = useState("");
   const [isPay, setIsPay] = useState(false);

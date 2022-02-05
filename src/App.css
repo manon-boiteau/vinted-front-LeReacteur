@@ -8,7 +8,6 @@
   --light-grey: #f5f6f7;
   --dark-grey: #adadad;
   --orange-disconnect: #ffa07a;
-
   --white: #ffffff;
 }
 
@@ -460,10 +459,6 @@ img.avatar-card {
   overflow-x: scroll;
   width: 70%;
 }
-/* ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-} */
 .offer-page .carousel img {
   height: 80vh;
   width: calc(100% / 2);

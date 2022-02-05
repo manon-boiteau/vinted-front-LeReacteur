@@ -1,15 +1,8 @@
-/* Import hooks from React */
 import { useState } from "react";
-
-/* Import Axios */
 import axios from "axios";
-
-/* Import FontAwesome */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Publish = ({ userToken }) => {
-  //   console.log(userToken); // is there a user token?
-
   const [data, setData] = useState();
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -23,7 +16,6 @@ const Publish = ({ userToken }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   const handleSubmit = async (event) => {
-    console.log(userToken);
     event.preventDefault();
     try {
       const formData = new FormData();
@@ -47,7 +39,6 @@ const Publish = ({ userToken }) => {
           },
         }
       );
-      console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     } catch (error) {

@@ -1,10 +1,5 @@
-/* Import react-router-dom */
-import { useHistory } from "react-router-dom";
-
-/* Import hooks from React */
 import { useState } from "react";
-
-/* Import Axios */
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 const Login = (props) => {

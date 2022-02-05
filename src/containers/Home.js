@@ -1,14 +1,8 @@
-/* Import hooks from React */
 import { useState, useEffect } from "react";
-
-/* Import axios */
 import axios from "axios";
-
-/* Import components */
 import Hero from "../components/Hero";
 import Offers from "../components/Offers";
 
-/* Import Fontawsome */
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSpinner, faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

@@ -1,9 +1,9 @@
-/* Import react-router-dom */
 import { Link } from "react-router-dom";
 
 const Offers = ({ data }) => {
   return (
     <main className="wrapper">
+      {/* TO DO Filter → doesn't work yet */}
       <div className="select-pages">
         <select name="pages" id="pages">
           <option value="cinq">5</option>
