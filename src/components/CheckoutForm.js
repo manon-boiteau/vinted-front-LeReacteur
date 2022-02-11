@@ -65,7 +65,7 @@ const CheckoutForm = ({ title, amount, name }) => {
         </div>
         <div>
           <span>Total</span>
-          <span>{amount + 0.4 + 0.8} €</span>
+          <span>{(amount + 0.4 + 0.8).toFixed(2)} €</span>
         </div>
       </div>
 
