@@ -24,7 +24,6 @@ body {
 }
 h1 {
   font-size: 30px;
-  font-weight: 600;
   margin-bottom: 40px;
 }
 h2 {
@@ -357,15 +356,19 @@ form.login-form {
   position: relative;
 }
 .hero div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
   position: absolute;
   top: calc(100% / 4);
   left: calc(100% / 10);
   background-color: var(--white);
   border: 1px solid var(--light-grey);
-  padding: 50px 30px;
+  padding: 0 30px;
   border-radius: 5px;
   width: 400px;
-  height: 258px;
+  height: 250px;
 }
 .hero .banner {
   width: 100vw;
@@ -377,10 +380,13 @@ form.login-form {
   bottom: 0;
   right: 0;
 }
-.hero button {
+.hero a {
   padding: 15px 20px;
   font-size: 16px;
   margin-bottom: 15px;
+  color: white;
+  background-color: var(--main-green);
+  border-radius: 10px;
 }
 
 /* Offers */

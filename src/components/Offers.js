@@ -4,13 +4,13 @@ const Offers = ({ data }) => {
   return (
     <main className="wrapper">
       {/* TO DO Filter → doesn't work yet */}
-      <div className="select-pages">
+      {/* <div className="select-pages">
         <select name="pages" id="pages">
           <option value="cinq">5</option>
           <option value="dix">10</option>
           <option value="vingt">20</option>
         </select>
-      </div>
+      </div> */}
 
       <div className="offers">
         {data.offers.map((elem) => {

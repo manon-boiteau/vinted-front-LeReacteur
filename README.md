@@ -41,7 +41,9 @@ Vinted clone made at [Le Reacteur](https://www.lereacteur.io/) Bootcamp.
 
 ## 🔜 To be continued
 
-⇢ Link my own backend to the frontend (at the moment, the backend linked is the one of Le Reacteur)
+⇢ Link my own backend to the frontend (at the moment, the backend linked is the one of Le Reacteur)  
+⇢ Search bar (not working yet)  
+⇢ Page number
 
 ## 🗝 Installation and usage
 
