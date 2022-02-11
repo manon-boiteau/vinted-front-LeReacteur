@@ -32,18 +32,25 @@ const CheckoutForm = ({ title, amount, name }) => {
       // API Manon : http://localhost:4000/pay
 
       // Send to server: token received by Stripe, offer's title & offer's price (in cents)
-      const response = await axios.post("http://localhost:4000/pay", {
-        token: stripeToken,
-        title: title,
-        amount: amount,
-      });
+      const response = await axios.post(
+        "https://lereacteur-vinted-api.herokuapp.com/payment",
+        {
+          token: stripeToken,
+          title: title,
+          amount: amount,
+        }
+      );
+      console.log(response);
 
       if (response.status === 200) {
         setSuccessMessage("Paiement validé 🥳");
         setIsPay(true);
+      } else {
+        console.log(2222);
       }
     } catch (error) {
       console.log(error.message);
+      console.log(77777);
     }
   };
 
