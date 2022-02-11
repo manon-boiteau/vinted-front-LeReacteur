@@ -40,17 +40,16 @@ const CheckoutForm = ({ title, amount, name }) => {
           amount: amount,
         }
       );
-      console.log(response);
 
       if (response.status === 200) {
         setSuccessMessage("Paiement validé 🥳");
         setIsPay(true);
-      } else {
-        console.log(2222);
       }
     } catch (error) {
       console.log(error.message);
-      console.log(77777);
+      alert(
+        "Nous sommes désolés, une erreur est survenue. Ré-essayez plus tard."
+      );
     }
   };
 
